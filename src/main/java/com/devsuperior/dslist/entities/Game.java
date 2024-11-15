@@ -9,24 +9,25 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-@Entity
-@Table(name = "tb_game")
+@Entity //entidade da tabela. referencia o banco de dados
+@Table(name = "tb_game") //referencia na tabela de banco de dados que a tabela deve ser o que está descrito
 public class Game{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id //referencia uma chave PK no banco de dados
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //referencia um auto incremento dos ids na tabela de banco de dados
     private Long id;
     private String title;
 
-    @Column(name = "game_year")
+    @Column(name = "game_year") //renomeia a coluna da tabela de banco de dados
     private Integer year;
     private String genre;
     private String platforms;
     private Double score;
     private String imgUrl;
-    @Column(columnDefinition = "Text")
+    
+    @Column(columnDefinition = "TEXT") //define a tipagem da coluna do banco de dados
     private String shortDescription;
-    @Column(columnDefinition = "Text")
+    @Column(columnDefinition = "TEXT")
     private String longDescription;
 
     public Game(){
@@ -34,7 +35,7 @@ public class Game{
 
     public Game(Long id, String title, Integer year, String genre, String platforms, Double score, String imgUrl,
                 String shortDescription, String longDescription){
-        super();
+    	
         this.id = id;
         this.title = title;
         this.year = year;
@@ -117,7 +118,7 @@ public class Game{
 		this.score = score;
 	}
 
-	@Override
+	@Override //Indica que uma declaração de método tem a intenção de substituir uma declaração de método em um supertipo.
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
